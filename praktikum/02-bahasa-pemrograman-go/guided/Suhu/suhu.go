@@ -11,5 +11,5 @@ func main() {
     fahrenheit := celsius * 9.0 / 5.0 + 32.0
     kelvin := celsius + 273.15
 
-    fmt.Println(reamur, fahrenheit, kelvin)
+    fmt.Printf("%g R, %g F, %g K\n", reamur, fahrenheit, kelvin)
 }

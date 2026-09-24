@@ -3,15 +3,17 @@ package main
 import "fmt"
 
 func main() {
-    var a, b int
+    var uang int
 
-    fmt.Scan(&a, &b)
+    fmt.Scan(&uang)
 
-    tambah := a + b
-    kurang := a - b
-    kali := a * b
-    bagi := a / b
-    mod := a % b
+    sepuluhRibu := uang / 10000
+    uang = uang % 10000
 
-    fmt.Println(tambah, kurang, kali, bagi, mod)
+    limaRibu := uang / 5000
+    uang = uang % 5000
+
+    seribu := uang / 1000
+
+    fmt.Println(sepuluhRibu, limaRibu, seribu)
 }

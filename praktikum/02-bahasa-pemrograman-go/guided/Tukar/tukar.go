@@ -9,5 +9,6 @@ func main() {
 
     a, b = b, a
 
-    fmt.Println(a, b)
+    fmt.Printf("A = %d\n", a)
+    fmt.Printf("B = %d\n", b)
 }

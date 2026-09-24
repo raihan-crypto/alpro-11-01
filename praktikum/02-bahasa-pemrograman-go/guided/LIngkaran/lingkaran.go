@@ -10,5 +10,5 @@ func main() {
     pi := 3.14
     luas := pi * r * r
 
-    fmt.Println(luas)
+    fmt.Println("Hasil :", luas)
 }
