@@ -7,8 +7,8 @@ func main() {
 
     fmt.Scan(&r)
 
-    pi := 3.14
-    luas := pi * r * r
+    phi := 3.14
+    luas := phi * r * r
 
     fmt.Println("Hasil :", luas)
 }
