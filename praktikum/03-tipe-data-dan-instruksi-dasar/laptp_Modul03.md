@@ -22,7 +22,7 @@ func main() {
 #### Deskripsi
 Pada program ini, saya membuat program untuk menghitung berapa sisa kue yang tidak habis dibagikan ke anggota keluarga. Saya membuat dua variabel `x` dan `y` bertipe `int`, di mana `y` adalah jumlah kue dan `x` adalah jumlah anggota keluarga. Input dibaca sekaligus menggunakan `fmt.Scan(&y, &x)`. Untuk mencari sisa kue yang tidak terbagi rata, saya memakai operator modulo (`%`) yaitu `y % x`, lalu hasilnya langsung ditampilkan ke layar dengan `fmt.Println`.
 
-### 2. bool.go
+### 2. bool
 
 ```go
 package main
@@ -45,7 +45,7 @@ func main() {
 #### Deskripsi
 Di soal kedua ini, tugasnya adalah membaca dan mencetak kembali nilai boolean. Di sini saya mendeklarasikan variabel `b` dengan tipe data `bool`. Program kemudian membaca input dari user (`true` atau `false`) lewat perintah `fmt.Scan(&b)`, setelah itu nilainya langsung dicetak kembali ke terminal menggunakan `fmt.Println(b)`.
 
-### 3. konversi.go
+### 3. konversi
 
 ```go
 package main
