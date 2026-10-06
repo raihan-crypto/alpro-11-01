@@ -1,0 +1,14 @@
+PROGRAM Energi
+
+DEKLARASI
+    E0 : integer
+    c  : integer
+    E1 : integer
+    cc : integer
+
+ALGORITMA
+    input(E0, c, E1)
+    cc <- (E0 - E1) div c
+    output(cc)
+
+END

@@ -1,0 +1,16 @@
+PROGRAM DigitGanda
+
+DEKLARASI
+    n            : integer
+    digitPertama : integer
+    digitKedua   : integer
+    hasil        : integer
+
+ALGORITMA
+    input(n)
+    digitPertama <- n div 10
+    digitKedua   <- n mod 10
+    hasil        <- (digitPertama * 1000) + (digitPertama * 100) + (digitKedua * 10) + digitKedua
+    output(hasil)
+
+END

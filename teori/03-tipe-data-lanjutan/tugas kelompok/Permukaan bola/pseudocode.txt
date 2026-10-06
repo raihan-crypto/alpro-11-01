@@ -1,0 +1,15 @@
+PROGRAM PermukaaanBola
+
+DEKLARASI
+    r    : real
+    pi   : real
+    luas : real
+
+ALGORITMA
+    input(r)
+    pi   <- 22 / 7
+    luas <- 4 * pi * r * r
+    output(luas)
+
+END
+

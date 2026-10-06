@@ -1,0 +1,12 @@
+PROGRAM Kapital
+
+DEKLARASI
+    c         : karakter
+    isKapital : boolean
+
+ALGORITMA
+    input(c)
+    isKapital <- (c >= 'A') AND (c <= 'Z')
+    output(isKapital)
+
+END
