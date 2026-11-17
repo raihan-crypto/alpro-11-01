@@ -2,9 +2,7 @@ package main
 
 import "fmt"
 
-// konversi mengonversi suhu Celsius ke Réaumur, Fahrenheit, dan Kelvin
 func konversi(c float64) (float64, float64, float64) {
-	r := 0.8 * c
 	f := 1.8*c + 32
 	k := c + 273.15
 	return r, f, k

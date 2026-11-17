@@ -2,7 +2,6 @@ package main
 
 import "fmt"
 
-// denom menghitung jumlah lembar pecahan Rp10.000, Rp2.000, dan Rp1.000
 func denom(n int) (int, int, int) {
 	lembar10000 := n / 10000
 	sisa := n % 10000

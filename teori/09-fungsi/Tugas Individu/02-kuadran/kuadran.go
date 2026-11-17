@@ -2,9 +2,7 @@ package main
 
 import "fmt"
 
-// kuadran menentukan letak titik (x, y) pada bidang kartesius
 func kuadran(x, y int) string {
-	if x == 0 && y == 0 {
 		return "Titik Asal"
 	} else if x == 0 {
 		return "Sumbu Y"

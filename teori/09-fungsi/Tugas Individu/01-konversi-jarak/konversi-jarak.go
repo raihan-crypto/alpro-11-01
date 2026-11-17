@@ -2,9 +2,7 @@ package main
 
 import "fmt"
 
-// konversi mengonversi jarak dari kilometer, meter, dan sentimeter ke sentimeter
 func konversi(km, m, cm int) int {
-	return km*100000 + m*100 + cm
 }
 
 func main() {

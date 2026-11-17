@@ -2,7 +2,6 @@ package main
 
 import "fmt"
 
-// faktorial menghitung n!
 func faktorial(n int) int {
 	if n == 0 {
 		return 1
@@ -14,7 +13,6 @@ func faktorial(n int) int {
 	return hasil
 }
 
-// kombinasi menghitung C(n, r) = n! / (r! * (n-r)!)
 func kombinasi(n, r int) int {
 	return faktorial(n) / (faktorial(r) * faktorial(n-r))
 }

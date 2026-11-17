@@ -2,9 +2,7 @@ package main
 
 import "fmt"
 
-// urutDua mengembalikan dua bilangan dengan nilai terkecil lebih dulu
 func urutDua(a, b int) (int, int) {
-	if a <= b {
 		return a, b
 	}
 	return b, a
