@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 func urutDua(a, b int) (int, int) {
+	if a <= b {
 		return a, b
 	}
 	return b, a

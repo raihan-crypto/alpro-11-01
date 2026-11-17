@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 func kuadran(x, y int) string {
+	if x == 0 && y == 0 {
 		return "Titik Asal"
 	} else if x == 0 {
 		return "Sumbu Y"
