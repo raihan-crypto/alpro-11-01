@@ -1,61 +1,56 @@
-# <h1 align="center">Tugas Pendahuluan Modul 10 - Fungsi</h1>
+# <h1 align="center">Tugas Pendahuluan Modul 10 & 11 - Fungsi dan Prosedur</h1>
 <p align="center">Raihan Ahmad Rahmadhani - 109092600025</p>
 
 ---
 
-### 1. Konsep Fungsi dan Penggunaannya dalam Bahasa Go
+## Dasar Teori
+
+### A. Konsep Fungsi dan Penggunaannya dalam Bahasa Go
 
 #### Deskripsi
+Fungsi (*function*) adalah blok kode terstruktur yang dirancang untuk melakukan tugas perhitungan atau pemrosesan tertentu dan mengembalikan suatu nilai hasil (*return value*) ke bagian program yang memanggilnya. Fungsi merupakan fondasi dalam dekomposisi modularitas yang memecah program kompleks menjadi sub-subprogram kecil yang mandiri, mudah dirawat, dan dapat digunakan berulang kali (*reusable*).
 
-Fungsi (*function*) adalah blok kode yang dirancang untuk melakukan tugas tertentu dan dapat dipanggil berulang kali dari bagian lain program. Fungsi merupakan salah satu konsep dasar dalam pemrograman terstruktur yang membantu memecah program besar menjadi bagian-bagian kecil yang lebih mudah dipahami, dikelola, dan diuji.
-
-Dalam bahasa Go, fungsi didefinisikan menggunakan kata kunci `func` dengan sintaks sebagai berikut:
-
+Dalam bahasa Go, fungsi didefinisikan menggunakan kata kunci `func` dengan sintaks:
 ```go
 func namaFungsi(parameter tipe) tipePengembalian {
-    // isi fungsi
+    // instruksi
     return nilai
 }
 ```
 
 **Komponen utama fungsi dalam Go:**
-
-1. **Nama fungsi** — identifier yang digunakan untuk memanggil fungsi. Nama dimulai dengan huruf kapital jika ingin dapat diakses dari luar *package* (exported), atau huruf kecil jika hanya untuk penggunaan internal.
-
-2. **Parameter** — nilai masukan yang diterima fungsi. Go mendukung nol atau lebih parameter, dan setiap parameter harus menyertakan tipenya secara eksplisit. Contoh: `func tambah(a int, b int) int`.
-
-3. **Tipe kembalian (return type)** — tipe data dari nilai yang dikembalikan fungsi. Jika fungsi tidak mengembalikan nilai, tipe kembalian dapat dihilangkan. Go juga mendukung **multiple return values**, misalnya `func bagi(a, b int) (int, error)`.
-
-4. **Pernyataan `return`** — digunakan untuk mengembalikan nilai dari fungsi. Jika fungsi bertipe `void` (tanpa kembalian), `return` bersifat opsional.
-
-**Keunggulan penggunaan fungsi:**
-
-- **Reusabilitas** — kode yang sama tidak perlu ditulis ulang, cukup panggil fungsinya.
-- **Modularitas** — program terbagi menjadi modul-modul kecil yang mudah dikembangkan secara terpisah.
-- **Keterbacaan** — program menjadi lebih mudah dibaca karena setiap fungsi memiliki tanggung jawab yang jelas.
-- **Kemudahan debugging** — kesalahan lebih mudah dilacak karena terisolasi dalam satu fungsi.
-
-**Fungsi dengan struct dan type alias:**
-
-Dalam Go, fungsi sering digunakan bersama `struct` dan `type alias` untuk memproses data terstruktur. `type alias` memungkinkan kita memberi nama baru pada tipe yang sudah ada (misalnya array dari struct), sehingga kode menjadi lebih ekspresif dan mudah dibaca.
-
-```go
-type Mahasiswa struct {
-    nama  string
-    nilai int
-}
-type DaftarMahasiswa = [100]Mahasiswa
-
-func prosesData(T DaftarMahasiswa, n int) float64 {
-    // ...
-}
-```
-
-Dengan konsep ini, fungsi tidak hanya memproses tipe data primitif, tetapi juga dapat menerima dan mengembalikan tipe data kompleks, menjadikan Go sangat fleksibel untuk membangun sistem yang terstruktur.
+1. **Nama fungsi** — Identifier pemanggil fungsi. Menggunakan huruf kapital diawal jika *exported* (dapat diakses dari luar *package*), atau huruf kecil jika hanya untuk *package* lokal.
+2. **Parameter** — Masukan yang diterima fungsi beserta deklarasi tipe datanya secara eksplisit.
+3. **Tipe kembalian (*return type*)** — Tipe data dari nilai yang dihasilkan fungsi. Go mendukung pengembalian nilai tunggal maupun jamak (*multiple return values*).
+4. **Pernyataan `return`** — Mengembalikan nilai hasil kalkulasi ke pemanggil fungsi.
 
 ---
 
-### 2. raport.go
+### B. Perbedaan Prosedur dan Fungsi serta Penggunaan Parameter Pointer pada Go
+
+#### Deskripsi
+Dalam paradigma pemrograman prosedural, terdapat dua konstruksi utama subprogram: **fungsi** (*function*) dan **prosedur** (*procedure*):
+
+1. **Fungsi (*Function*):**
+   - Subprogram yang **mengembalikan nilai hasil** (*return value*) melalui `return`.
+   - Dipanggil sebagai bagian dari suatu ekspresi, misalnya `hasil := hitungLuas(p, l)`.
+   - Bertujuan menghitung nilai murni tanpa menimbulkan efek samping pada variabel pemanggil.
+
+2. **Prosedur (*Procedure*):**
+   - Subprogram yang **tidak memiliki tipe kembalian** (*void*).
+   - Bekerja dengan menjalankan urutan aksi atau memodifikasi variabel di pemanggil melalui mekanisme ***pass-by-reference*** menggunakan pointer.
+   - Dipanggil sebagai pernyataan mandiri, misalnya `tukar(&a, &b)`.
+
+3. **Implementasi Prosedur di Go Menggunakan Parameter Pointer:**
+   - Go tidak memiliki kata kunci khusus `procedure`. Prosedur diimplementasikan sebagai fungsi tanpa tipe kembalian di sebelah kanan tanda kurung parameter.
+   - Parameter keluaran (*out*) atau pembaruan (*in/out*) dikirimkan sebagai tipe **pointer** (`*tipe`). Saat dipanggil, argumen dilewatkan dengan menyertakan alamat memorinya melalui operator `&` (*address-of*).
+   - Di dalam badan prosedur, operator dereferensi `*` digunakan untuk memodifikasi langsung nilai pada memori variabel pemanggil.
+
+---
+
+## Pembahasan Soal Tugas Pendahuluan
+
+### 1. TP Soal 1: raport.go
 
 ```go
 package main
@@ -116,21 +111,17 @@ func main() {
 ![Screenshot Output TP Soal 1](TP/soal%201/Screenshot%202026-11-18%20at%2013.56.55.png)
 
 #### Deskripsi
+Program `raport.go` mencetak laporan nilai rapor mata kuliah mahasiswa dengan memanfaatkan fungsi modular untuk konversi nilai numerik ke huruf serta kalkulasi rerata nilai.
 
-Program `raport.go` merupakan program cetak rapor mahasiswa yang memanfaatkan fungsi untuk memisahkan logika konversi nilai dan perhitungan rata-rata dari fungsi utama `main`.
-
-1. Program mendeklarasikan konstanta `NMAX = 999` sebagai batas maksimum data yang dapat ditampung.
-2. Tipe `rapot` didefinisikan sebagai `struct` yang menyimpan dua field: `matkul` (nama mata kuliah, bertipe `string`) dan `nilai` (nilai numerik, bertipe `int`).
-3. `tabRapot` merupakan *type alias* dari array berukuran `NMAX` bertipe `rapot`, digunakan sebagai tipe parameter pada fungsi-fungsi yang memproses data rapor.
-4. Fungsi `nilaiHuruf(x int) string` menerima nilai numerik dan mengembalikan nilai huruf berdasarkan rentang nilai: di atas 80 → `"A"`, di atas 70 → `"AB"`, di atas 65 → `"B"`, di atas 60 → `"BC"`, di atas 50 → `"C"`, di atas 40 → `"D"`, selain itu → `"E"`.
-5. Fungsi `rataRata(T tabRapot, n int) float64` menjumlahkan seluruh nilai dari `n` data pertama dalam array `T`, lalu membaginya dengan `n` untuk menghasilkan nilai rata-rata bertipe `float64`.
-6. Pada `main`, program membaca jumlah mata kuliah `n`, lalu membaca pasangan `matkul` dan `nilai` sebanyak `n` kali ke dalam array `T`.
-7. Program kemudian mencetak setiap baris rapor dalam format `matkul nilai nilaiHuruf` menggunakan `fmt.Printf`, dengan nilai huruf diperoleh dari pemanggilan fungsi `nilaiHuruf`.
-8. Terakhir, program mencetak rata-rata nilai menggunakan pemanggilan fungsi `rataRata`, diformat dua angka di belakang koma.
+1. Konstanta `NMAX = 999` membatasi kapasitas penyimpanan mata kuliah.
+2. `struct rapot` mengelompokkan data nama mata kuliah (`matkul`, string) dan perolehan skornya (`nilai`, int). Tipe `tabRapot` adalah alias array berukuran `NMAX` bertipe `rapot`.
+3. Fungsi `nilaiHuruf(x int) string` menerima nilai numerik dan mengembalikan grade huruf bersyarat: $>80 \rightarrow \text{"A"}$, $>70 \rightarrow \text{"AB"}$, $>65 \rightarrow \text{"B"}$, $>60 \rightarrow \text{"BC"}$, $>50 \rightarrow \text{"C"}$, $>40 \rightarrow \text{"D"}$, dan selain itu $\rightarrow \text{"E"}$.
+4. Fungsi `rataRata(T tabRapot, n int) float64` mengakumulasikan nilai dari $n$ data pertama array $T$ lalu membaginya dengan $n$.
+5. Pada `main`, setelah membaca $n$ dan mengisi data rapor, program menampilkan setiap mata kuliah, nilai angka, nilai huruf hasil evaluasi `nilaiHuruf`, serta rata-rata akhir dengan format dua desimal (`%.2f`).
 
 ---
 
-### 3. inputnilai.go
+### 2. TP Soal 2: inputnilai.go
 
 ```go
 package main
@@ -194,25 +185,204 @@ func main() {
 ![Screenshot Output TP Soal 2](TP/soal%202/Screenshot%202026-11-18%20at%2013.58.17.png)
 
 #### Deskripsi
+Program `inputnilai.go` mengelola pencatatan data akademik mahasiswa yang dilengkapi fungsi pencegah duplikasi data NIM dan penghitungan nilai rata-rata kelas.
 
-Program `inputnilai.go` merupakan sistem input data nilai mahasiswa yang dilengkapi dengan validasi duplikasi NIM menggunakan fungsi pencarian, serta perhitungan rata-rata nilai akhir.
+1. Didefinisikan `struct student` yang memuat field `nim` (string), `name` (string), dan `grade` (float64). `students` merupakan alias array bertipe `student` berkapasitas `NMAX = 100`.
+2. Fungsi `cariNIM(T students, n int, nim string) int` menelusuri array $T$ secara sekuensial. Jika NIM ditemukan, indeks posisinya dikembalikan; jika tidak ditemukan, fungsi mengembalikan `-1`.
+3. Fungsi `rataRata(T students, n int) float64` menjumlahkan field `grade` dari $n$ mahasiswa lalu membaginya dengan $n$.
+4. Pada fungsi `main`, masukan dibaca secara berulang dalam *infinite loop* yang berhenti ketika menerima input sentinel `"STOP"`.
+5. Setiap pasang data baru diverifikasi menggunakan pemanggilan `cariNIM`. Data hanya dimasukkan ke array jika NIM belum pernah terdaftar (`cariNIM == -1`).
+6. Setelah pembacaan selesai, program menampilkan daftar mahasiswa yang berhasil tersimpan serta mencetak nilai rata-rata kelas.
 
-1. Program mendeklarasikan konstanta `NMAX = 100` sebagai batas maksimum jumlah mahasiswa yang dapat disimpan.
-2. Tipe `student` didefinisikan sebagai `struct` dengan tiga field: `nim` (Nomor Induk Mahasiswa, bertipe `string`), `name` (nama mahasiswa, bertipe `string`), dan `grade` (nilai akhir, bertipe `float64`).
-3. `students` merupakan *type alias* dari array berukuran `NMAX` bertipe `student`, digunakan sebagai tipe parameter pada kedua fungsi pembantu.
-4. Fungsi `cariNIM(T students, n int, nim string) int` melakukan pencarian linier pada `n` data pertama array `T`. Jika NIM ditemukan, fungsi mengembalikan indeks posisinya; jika tidak ditemukan, fungsi mengembalikan `-1`.
-5. Fungsi `rataRata(T students, n int) float64` menjumlahkan nilai `grade` dari seluruh `n` mahasiswa, lalu membaginya dengan `n` untuk menghasilkan rata-rata bertipe `float64`.
-6. Pada `main`, program membaca NIM satu per satu dalam *loop* tak terbatas (`for` tanpa kondisi). Jika NIM yang dibaca adalah `"STOP"`, *loop* dihentikan dengan `break`.
-7. Untuk setiap NIM yang bukan `"STOP"`, program membaca `name` dan `grade`, kemudian memanggil `cariNIM` untuk memeriksa duplikasi. Data hanya disimpan ke array `T` jika NIM belum ada (nilai kembalian `cariNIM` adalah `-1`), sehingga mencegah entri ganda.
-8. Setelah input selesai, program mencetak seluruh data mahasiswa yang tersimpan menggunakan `fmt.Println`.
-9. Program mengakhiri outputnya dengan mencetak rata-rata nilai menggunakan pemanggilan fungsi `rataRata`, diformat dua angka di belakang koma.
+---
+
+### 3. TP Soal 3: sekolah.go
+
+```go
+package main
+
+import "fmt"
+
+const NMAX = 1001
+
+type tabMurid = [NMAX]string
+
+func cariMurid(T tabMurid, n int, nama string, posisi *int, ketemu *bool) {
+	*ketemu = false
+	for i := 0; i < n; i++ {
+		if T[i] == nama {
+			*ketemu = true
+			*posisi = i + 1
+			return
+		}
+	}
+}
+
+func hitungHuruf(T tabMurid, n int, h byte, jumlah *int) {
+	*jumlah = 0
+	for i := 0; i < n; i++ {
+		if len(T[i]) > 0 && T[i][0] == h {
+			*jumlah++
+		}
+	}
+}
+
+func main() {
+	var n int
+	fmt.Scan(&n)
+
+	var T tabMurid
+	for i := 0; i < n; i++ {
+		fmt.Scan(&T[i])
+	}
+
+	var nama string
+	fmt.Scan(&nama)
+
+	var posisi int
+	var ketemu bool
+	cariMurid(T, n, nama, &posisi, &ketemu)
+
+	if ketemu {
+		fmt.Printf("Murid terdaftar dan berada di urutan absen ke-%d\n", posisi)
+	} else {
+		fmt.Println("Murid tidak terdaftar")
+	}
+
+	var jumlah int
+	hitungHuruf(T, n, nama[0], &jumlah)
+	fmt.Printf("Jumlah murid dengan huruf awal %c: %d\n", nama[0], jumlah)
+}
+```
+
+##### Output
+
+```text
+Masukan:
+5
+Ani Budi Cahya Ani Dani
+Cahya
+
+Keluaran:
+Murid terdaftar dan berada di urutan absen ke-3
+Jumlah murid dengan huruf awal C: 1
+```
+
+#### Deskripsi
+Program `sekolah.go` mengelola absensi nama murid menggunakan prosedur murni dengan parameter keluaran berbasis pointer (*pass-by-reference*).
+
+1. Tipe `tabMurid` merupakan alias array string berkapasitas `NMAX = 1001`.
+2. **Prosedur `cariMurid(T tabMurid, n int, nama string, posisi *int, ketemu *bool)`**:
+   - Memiliki dua parameter keluaran berbasis pointer: `*posisi` dan `*ketemu`.
+   - Menginisialisasi `*ketemu = false`. Melakukan pencarian sekuensial pada array $T$. Jika nama cocok, `*ketemu` diubah menjadi `true`, nomor urut absen diisi `*posisi = i + 1`, lalu prosedur langsung keluar (`return`).
+3. **Prosedur `hitungHuruf(T tabMurid, n int, h byte, jumlah *int)`**:
+   - Menghitung berapa banyak murid yang namanya diawali oleh karakter huruf tertentu `h`.
+   - Setiap kecocokan `T[i][0] == h` menginkremen nilai yang ditunjuk oleh pointer `*jumlah`.
+4. Pada `main`, kedua prosedur dipanggil dengan melewatkan alamat memori variabel lokal (`&posisi`, `&ketemu`, `&jumlah`). Perubahan data di dalam prosedur secara langsung memengaruhi nilai variabel di fungsi `main`.
+
+---
+
+### 4. TP Soal 4: penduduk.go
+
+```go
+package main
+
+import "fmt"
+
+const NMAX = 1000
+
+type penduduk struct {
+	nama  string
+	tahun int
+	kota  string
+}
+
+type tabPenduduk = [NMAX]penduduk
+
+func cariTahun(T tabPenduduk, n, th int, idx *int) {
+	*idx = -1
+	for i := 0; i < n; i++ {
+		if T[i].tahun == th {
+			*idx = i
+			return
+		}
+	}
+}
+
+func tertuaTermuda(T tabPenduduk, n int, tua, muda *penduduk) {
+	*tua = T[0]
+	*muda = T[0]
+	for i := 1; i < n; i++ {
+		if T[i].tahun < tua.tahun {
+			*tua = T[i]
+		}
+		if T[i].tahun > muda.tahun {
+			*muda = T[i]
+		}
+	}
+}
+
+func main() {
+	var n int
+	fmt.Scan(&n)
+
+	var T tabPenduduk
+	for i := 0; i < n; i++ {
+		fmt.Scan(&T[i].nama, &T[i].tahun, &T[i].kota)
+	}
+
+	var th int
+	fmt.Scan(&th)
+
+	var idx int
+	cariTahun(T, n, th, &idx)
+	if idx != -1 {
+		fmt.Printf("%s %d %s ditemukan di index ke-%d\n", T[idx].nama, T[idx].tahun, T[idx].kota, idx)
+	} else {
+		fmt.Println("Data tidak ditemukan")
+	}
+
+	var tua, muda penduduk
+	tertuaTermuda(T, n, &tua, &muda)
+	fmt.Printf("Penduduk tertua: %s (%d)\n", tua.nama, tua.tahun)
+	fmt.Printf("Penduduk termuda: %s (%d)\n", muda.nama, muda.tahun)
+}
+```
+
+##### Output
+
+```text
+Masukan:
+4
+Budi 1950 Jakarta
+Sari 1990 Bandung
+Andi 1975 Surabaya
+Dewi 2001 Medan
+1975
+
+Keluaran:
+Andi 1975 Surabaya ditemukan di index ke-2
+Penduduk tertua: Budi (1950)
+Penduduk termuda: Dewi (2001)
+```
+
+#### Deskripsi
+Program `penduduk.go` mengelola pencatatan sensus kependudukan menggunakan struct majemuk dan prosedur yang menerima parameter pointer ke struct.
+
+1. `struct penduduk` mengelompokkan atribut `nama` (string), `tahun` (int), dan `kota` (string). `tabPenduduk` merupakan alias array berkapasitas `NMAX = 1000`.
+2. **Prosedur `cariTahun(T tabPenduduk, n, th int, idx *int)`**:
+   - Mencari penduduk berdasarkan tahun lahir `th`.
+   - Menuliskan indeks yang ditemukan ke parameter pointer `*idx`, atau tetap `-1` jika tahun tidak ditemukan dalam daftar.
+3. **Prosedur `tertuaTermuda(T tabPenduduk, n int, tua, muda *penduduk)`**:
+   - Menerima dua parameter pointer ke struct: `tua *penduduk` dan `muda *penduduk`.
+   - Menginisialisasi `*tua` dan `*muda` dengan elemen pertama `T[0]`. Melalui iterasi, membandingkan nilai `tahun`: tahun lebih kecil mengindikasikan penduduk lebih tua, sedangkan tahun lebih besar mengindikasikan penduduk lebih muda.
+   - Karena parameter berupa pointer ke struct, seluruh field data (nama, tahun, kota) langsung termodifikasi pada variabel pemanggil tanpa overhead salinan data.
+4. Pada `main`, program menampilkan data penduduk hasil pencarian tahun serta mencetak nama dan tahun lahir penduduk tertua dan termuda.
 
 ---
 
 ## Kesimpulan
 
-1. **Fungsi sebagai unit modular** — Penggunaan fungsi seperti `nilaiHuruf` dan `cariNIM` memisahkan logika spesifik dari alur utama program, membuat kode lebih terstruktur, mudah dibaca, dan mudah dimodifikasi tanpa memengaruhi bagian lain.
-
-2. **Type alias dan struct memperkuat fungsi** — Kombinasi `struct` untuk mengelompokkan data terkait dan `type alias` untuk mendefinisikan tipe array kustom memungkinkan fungsi menerima dan memproses data terstruktur secara ekspresif dan aman secara tipe (*type-safe*).
-
-3. **Fungsi mencegah duplikasi kode** — Fungsi `rataRata` pada kedua program menunjukkan bahwa logika yang sama (penjumlahan lalu pembagian) dapat digunakan kembali hanya dengan menyesuaikan tipe parameter, mengurangi pengulangan kode dan risiko kesalahan (*bug*) akibat kode yang tidak konsisten.
+1. **Pemilihan Fungsi vs Prosedur**: Fungsi digunakan ketika subprogram bertujuan menghasilkan satu nilai kalkulasi yang langsung digunakan dalam evaluasi ekspresi (seperti `rataRata` dan `nilaiHuruf`), sedangkan prosedur digunakan ketika subprogram menjalankan aksi, memodifikasi struktur data, atau menghasilkan beberapa keluaran sekaligus melalui parameter pointer (seperti `cariMurid`, `tertuaTermuda`).
+2. **Implementasi Prosedur di Go**: Bahasa Go tidak memiliki kata kunci `procedure`. Prosedur di Go direalisasikan melalui fungsi bertipe kembalian kosong (*void*) yang memanfaatkan parameter **pointer** (`*tipe`) dan pengiriman alamat memori (`&variabel`) untuk mekanisme *pass-by-reference*.
+3. **Efisiensi Penggunaan Pointer**: Pada tipe data berukuran besar seperti array dan struct, melewatkan pointer ke dalam subprogram menghemat penggunaan memori komputasi karena program tidak perlu menduplikasi seluruh isi elemen saat pemanggilan subprogram berlangsung.
