@@ -108,7 +108,7 @@ func main() {
 
 ##### Output
 
-![Screenshot Output TP Soal 1](TP/soal%201/Screenshot%202026-11-18%20at%2013.56.55.png)
+![Screenshot Output TP Soal 1](TP/soal%201/output.png)
 
 #### Deskripsi
 Program `raport.go` mencetak laporan nilai rapor mata kuliah mahasiswa dengan memanfaatkan fungsi modular untuk konversi nilai numerik ke huruf serta kalkulasi rerata nilai.
@@ -182,7 +182,7 @@ func main() {
 
 ##### Output
 
-![Screenshot Output TP Soal 2](TP/soal%202/Screenshot%202026-11-18%20at%2013.58.17.png)
+![Screenshot Output TP Soal 2](TP/soal%202/output.png)
 
 #### Deskripsi
 Program `inputnilai.go` mengelola pencatatan data akademik mahasiswa yang dilengkapi fungsi pencegah duplikasi data NIM dan penghitungan nilai rata-rata kelas.
@@ -257,16 +257,7 @@ func main() {
 
 ##### Output
 
-```text
-Masukan:
-5
-Ani Budi Cahya Ani Dani
-Cahya
-
-Keluaran:
-Murid terdaftar dan berada di urutan absen ke-3
-Jumlah murid dengan huruf awal C: 1
-```
+![Screenshot Output TP Soal 3](TP/soal%203/output.png)
 
 #### Deskripsi
 Program `sekolah.go` mengelola absensi nama murid menggunakan prosedur murni dengan parameter keluaran berbasis pointer (*pass-by-reference*).
@@ -351,20 +342,7 @@ func main() {
 
 ##### Output
 
-```text
-Masukan:
-4
-Budi 1950 Jakarta
-Sari 1990 Bandung
-Andi 1975 Surabaya
-Dewi 2001 Medan
-1975
-
-Keluaran:
-Andi 1975 Surabaya ditemukan di index ke-2
-Penduduk tertua: Budi (1950)
-Penduduk termuda: Dewi (2001)
-```
+![Screenshot Output TP Soal 4](TP/soal%204/output.png)
 
 #### Deskripsi
 Program `penduduk.go` mengelola pencatatan sensus kependudukan menggunakan struct majemuk dan prosedur yang menerima parameter pointer ke struct.

@@ -139,9 +139,6 @@ func main() {
 }
 ```
 
-##### Output
-![Screenshot Output Guided 1](guided/output.png)
-
 #### Deskripsi
 Program `player.go` mengimplementasikan pengolahan data turnamen game menggunakan konsep modularitas berbasis fungsi dengan nilai kembalian (*return value*).
 
@@ -233,9 +230,6 @@ func main() {
 	cetak(T, n)
 }
 ```
-
-##### Output
-![Screenshot Output Guided 2](guided/output2.png)
 
 #### Deskripsi
 Program `sapi.go` memecahkan masalah rotasi sirkular posisi sapi di $N$ kandang setelah $K$ hari dengan memanfaatkan prosedur murni (fungsi tanpa nilai kembalian dengan parameter pointer).
@@ -345,7 +339,7 @@ func main() {
 ```
 
 ##### Output
-![Screenshot Output Unguided 1](unguided/output.png)
+![Screenshot Output Unguided 1](unguided/soal%201/output.png)
 
 #### Deskripsi
 Program `gempa.go` dirancang untuk mengolah dan menganalisis sekumpulan catatan data seismologi (gempa bumi) melalui pemisahan logika ke dalam beberapa fungsi terspesialisasi.
@@ -442,7 +436,7 @@ func main() {
 ```
 
 ##### Output
-![Screenshot Output Unguided 2](unguided/output2.png)
+![Screenshot Output Unguided 2](unguided/soal%202/output.png)
 
 #### Deskripsi
 Program `nim.go` mensimulasikan mekanisme pencarian dan pembaruan data Nomor Induk Mahasiswa (NIM) pada sistem akademik menggunakan konsep prosedur dan parameter pointer.
